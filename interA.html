@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chez Pierre Menu</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .menu-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .menu-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 10px 20px;
+            position: relative;
+        }
+        
+        .menu-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 2px, transparent 2px),
+                radial-gradient(circle at 80% 50%, rgba(255,255,255,0.1) 2px, transparent 2px);
+            background-size: 50px 50px;
+        }
+        
+        .restaurant-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .phone-number {
+            font-size: 1.2rem;
+            font-weight: bold;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .menu-content {
+            padding: 40px 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .menu-category {
+            background: #fafafa;
+            border-radius: 10px;
+            padding: 5px 25px 25px 25px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .category-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .category-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+        
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px dotted #ddd;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+        
+        .menu-item:hover {
+            background-color: rgba(102, 126, 234, 0.05);
+            padding-left: 10px;
+            border-radius: 5px;
+        }
+        
+        .item-name {
+            font-weight: 600;
+            color: #444;
+            flex: 1;
+            font-size: 0.95rem;
+        }
+        
+        .item-price {
+            font-weight: 700;
+            color: #667eea;
+            font-size: 1rem;
+            min-width: 80px;
+            text-align: right;
+        }
+        
+        .special-item {
+            background: linear-gradient(90deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            border-radius: 5px;
+            padding: 15px 10px;
+            margin: 5px 0;
+            border-left: 3px solid #667eea;
+        }
+        
+        .special-item .item-name {
+            font-weight: 700;
+            color: #667eea;
+        }
+        
+        .special-item .item-price {
+            font-size: 1.1rem;
+            font-weight: 800;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .menu-container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            
+            .menu-content {
+                padding: 30px 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .restaurant-name {
+                font-size: 2.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-container">
+        <div class="menu-header">
+            <h1 class="restaurant-name">👨‍🍳 فرن Chez Pierre</h1>
+            <p class="phone-number">📞 76993317</p>
+        </div>
+        
+        <div class="menu-content">
+            <div class="menu-category">
+                <h2 class="category-title">Mankouch</h2>
+                <div class="menu-item">
+                    <span class="item-name">Zaatar</span>
+                    <span class="item-price">60,000 L.L</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Zaatar w Khedra</span>
+                    <span class="item-price">100,000 L.L</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Zaatar w Jebneh</span>
+                    <span class="item-price">130,000 L.L</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Half Zaatar Half Jebneh</span>
+                    <span class="item-price">150,000 L.L</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Jebneh</span>
+                    <span class="item-price">200,000 L.L</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Jebneh w Jambon</span>
+                    <span class="item-price">250,000 L.L</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Jebneh w Peperoni</span>
+                    <span class="item-price">350,000 L.L</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Lahme</span>
+                    <span class="item-price">180,000 L.L</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Lahme w Jebneh</span>
+                    <span class="item-price">240,000 L.L</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Half Lahme Half Jebneh</span>
+                    <span class="item-price">220,000 L.L</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Kafta</span>
+                    <span class="item-price">300,000 L.L</span>
+                </div>
+                 <div class="menu-item">
+                    <span class="item-name">Kafta w Khedra</span>
+                    <span class="item-price">350,000 L.L</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Kechek</span>
+                    <span class="item-price">170,000 L.L</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Telme</span>
+                    <span class="item-price">35,000 L.L</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Mhamra</span>
+                    <span class="item-price">170,000 L.L</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Special Combo</span>
+                    <span class="item-price">300,000 L.L</span>
+                </div>
+            </div>
+            
+            <div class="menu-category">
+                <h2 class="category-title">Pizza</h2>
+                <div class="menu-item">
+                    <span class="item-name">Regular</span>
+                    <span class="item-price">8$</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Margherita</span>
+                    <span class="item-price">6$</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Peperoni</span>
+                    <span class="item-price">9$</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Salami</span>
+                    <span class="item-price">9$</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">BBQ</span>
+                    <span class="item-price">10$</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Special Pizza</span>
+                    <span class="item-price">14$</span>
+                </div>
+                
+                <h2 class="category-title" style="margin-top: 10px;">Kaak</h2>
+                <div class="menu-item">
+                    <span class="item-name">2 Cheese</span>
+                    <span class="item-price">150,000 L.L</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">4 Cheese</span>
+                    <span class="item-price">250,000 L.L</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Cheese Jambon</span>
+                    <span class="item-price">200,000 L.L</span>
+                </div>
+                <div class="menu-item ">
+                    <span class="item-name">Submarine</span>
+                    <span class="item-price">350,000 L.L</span>
+                </div>
+                <h2 class="category-title">Pizza Kaak</h2>
+                <div style>
+                    <div class="menu-item">
+                        <span class="item-name">Regular</span>
+                        <span class="item-price">5$</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="item-name">Margherita</span>
+                        <span class="item-price">4$</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="item-name">Peperoni</span>
+                        <span class="item-price">6$</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="item-name">Salami</span>
+                        <span class="item-price">6$</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="item-name">Special Kaak</span>
+                        <span class="item-price">8$</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
